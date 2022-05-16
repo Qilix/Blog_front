@@ -1,8 +1,8 @@
 <template>
-    <div class="text-center">
+    <div>
     <v-dialog
       v-model="dialog"
-      width="500"
+      width="700"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -10,6 +10,7 @@
           dark
           v-bind="attrs"
           v-on="on"
+          width="200"
         >
           Log-in
         </v-btn>
