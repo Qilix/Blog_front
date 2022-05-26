@@ -4,6 +4,7 @@
   class="d-flex justify-start mb-6"
   height="100%" 
   background="green"
+  
   >
 
     <v-navigation-drawer 
@@ -78,6 +79,8 @@
   }
   .nav{
     height: 100vh;
+    position: sticky;
+    top: 0;
   }
   .h-100{
     height: 100%;

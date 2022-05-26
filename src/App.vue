@@ -1,16 +1,24 @@
 <template>
   <v-app>
-   <Navbar/>
-   <router-view/>
+      <v-container class="grey lighten-5" fluid>
+      <v-row>
+          <Navbar/>
+          <v-main>
+          <router-view/>
+          </v-main>
+      </v-row>
+      </v-container>
   </v-app>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar'
+import Home from '@/views/Home'
+
 export default {
   name: 'App',
   components: {
-    Navbar,
+    Navbar,Home
   }
 };
 </script>
