@@ -8,6 +8,7 @@ export const getArticleById = (id) => {
     return ax.get('api/' + id);
 };
 
-export const getArticles = () => {
-    return ax.get('api/');
+export const getArticles = (page) => {
+    return ax.get('api/?page=' + page
+    );
 };
