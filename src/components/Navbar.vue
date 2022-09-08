@@ -21,7 +21,7 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" link  @click="$router.push({ name: item.name})">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -53,10 +53,12 @@
       return {
         items: [{
             title: 'Главная',
+            name: 'home',
             icon: 'mdi-view-dashboard'
           },
           {
             title: 'О нас',
+            name: 'about us',
             icon: 'mdi-help-box'
           },
         ],

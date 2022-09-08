@@ -3,9 +3,11 @@
       <v-container class="grey lighten-5" fluid>
       <v-row>
           <Navbar/>
+        <v-col cols="8">
           <v-main>
           <router-view/>
           </v-main>
+        </v-col>
       </v-row>
       </v-container>
   </v-app>
