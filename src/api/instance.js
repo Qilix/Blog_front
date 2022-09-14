@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const ax = axios.create({
     withCredentials: true,
-    baseURL: 'http://127.0.0.1:8000/',
+    baseURL: 'http://valllee.ru:8000/',
 
 })
 
@@ -18,28 +18,20 @@ export const getUser = () => {
     return ax.get('api/users/');
 };
 
-export const loginUser = (email, password) => {
-    return ax.post('api/users/login', {
-        email:email,
-        password:password
-    }).then( r =>{console.log(r)});
+export const loginUser = (data) => {
+    return ax.post('api/users/login', data);
 };
 
-export const registerUser = (name, email, password, password_confirmation) => {
-    return ax.post('api/users/register', {
-        name:name,
-        email:email,
-        password:password,
-        password_confirmation:password_confirmation
-    }).then( r =>{console.log(r)});
+export const registerUser = (data) => {
+    return ax.post('api/users/register', data);
 };
 
 export const logoutUser = () => {
-    return ax.get('api/users/logout');
+    return ax.post('api/users/logout')
 };
 
-export const createComment = (id) => {
-    return ax.post('api/posts/' + id +'/comments/' );
+export const createComment = (id, data) => {
+    return ax.post('api/posts/' + id +'/comments/', data)
 };
 
 export const updateComment = (id, comment_id) => {

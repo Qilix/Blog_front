@@ -23,7 +23,7 @@
         v-if="buttons"
         color="blue darken-1"
         text
-        @click="dialog = false"
+        @click="create"
     >
       Save
     </v-btn>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {createComment} from "../api/instance";
 export default {
   name: "Comment",
 
@@ -43,8 +44,8 @@ export default {
   },
 
   methods:{
-    createCom(){
-
+    create(){
+      console.log(createComment(this.id,this.body));
     }
 },
     props:{
