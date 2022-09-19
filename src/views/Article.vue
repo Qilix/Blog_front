@@ -23,7 +23,7 @@
             <v-card-subtitle>
                 <h5>{{ article.author }}</h5>
             </v-card-subtitle>
-            <v-card-text>
+            <v-card-text v-html="article.text">
                 {{ article.text }}
             </v-card-text>
         </v-card>

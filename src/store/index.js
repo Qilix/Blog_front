@@ -10,6 +10,6 @@ export default new Vuex.Store({
 
     modules:{
       article,
-        user
+        user,
     },
 })
