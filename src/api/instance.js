@@ -14,6 +14,18 @@ export const getArticles = (page) => {
     return ax.get('api/posts/?page=' + page);
 };
 
+export const createArticle = (data) => {
+    return ax.post('api/posts/', data)
+};
+
+export const updateArticle = (id, data) => {
+    return ax.put('api/posts/' + id, data);
+};
+
+export const deleteArticle = (id) => {
+    return ax.delete('api/posts/' + id);
+};
+
 export const getUser = () => {
     return ax.get('api/users/');
 };

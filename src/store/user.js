@@ -15,17 +15,14 @@ export default {
     actions: {
         statusUser(context) {
             getUser().then((result) => {
-                if (result.status === 200) {
-                    this.user = result.data
-                    context.commit('setUser', this.user)
-                    // console.log(this.user);
+                this.user = result.data
+                context.commit('setUser', this.user)
+            }).catch((err) =>{
+                if(err.response.status == 401){
+                    //
                 }
-                else{
-                    // console.log("Not user");
-                }
-
-            });
+            })
+            }
         },
-    },
-}
+    }
 

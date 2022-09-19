@@ -239,8 +239,7 @@ export default {
       }).then(res => {
         this.currentUser = res.data.user;
         this.$store.commit("setUser", this.currentUser);
-        this.dialog = !this.dialog;
-        this.register = !this.register;
+        this.register = false;
         this.message = null;
       }).catch((err) => {
           if(err.response.status == 422){
@@ -250,15 +249,18 @@ export default {
       },
 
     actionsUser(action) {
+
       switch(action) {
         case 'logout':
           logoutUser();
+          this.dialog = false;
           this.currentUser = null;
-          this.dialog = !this.dialog;
           this.$store.commit("setUser", this.currentUser);
+          break;
         case 'createArticle':
-          //
-      }
+          this.$router.push({ name: "createarticle"})
+          break;
+        }
     },
   },
 
@@ -269,7 +271,7 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch('statusUser', this.currentUser);
+    this.$store.dispatch('statusUser');
   },
 }
 </script>
