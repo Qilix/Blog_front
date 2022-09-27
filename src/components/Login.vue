@@ -163,22 +163,28 @@
       </v-list>
     </v-menu>
   </v-container>
-</template>
+  </template>
 
 <script>
 import { loginUser, registerUser, logoutUser } from '../api/instance';
-
+import { eventBus } from '../main'
 export default {
   data() {
     return {
-      items: [{
-        title: 'Создать запись',
-        action: 'createArticle',
-      },
+      items: [
+        {
+          title: 'Мои статьи',
+          action: "userArticles",
+        },
+        {
+          title: 'Создать запись',
+          action: 'createArticle',
+        },
         {
           title: 'Выйти',
           action: "logout",
         },
+
       ],
 
       message: null,
@@ -260,6 +266,9 @@ export default {
         case 'createArticle':
           this.$router.push({ name: "createarticle"})
           break;
+        case 'userArticles':
+          this.$router.push({ name: "userarticles"})
+          break;
         }
     },
   },
@@ -271,6 +280,9 @@ export default {
   },
 
   mounted() {
+    eventBus.$on('checkUser',  data => {
+      this.dialog = true;
+      })
     this.$store.dispatch('statusUser');
   },
 }

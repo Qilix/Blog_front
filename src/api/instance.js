@@ -30,6 +30,10 @@ export const getUser = () => {
     return ax.get('api/users/');
 };
 
+export const getUserArticles = (page) => {
+    return ax.get('api/users/articles/?page=' + page);
+};
+
 export const loginUser = (data) => {
     return ax.post('api/users/login', data);
 };
