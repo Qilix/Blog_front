@@ -24,5 +24,10 @@ export default {
             })
             }
         },
+    getters:{
+        checkUser(state){
+            return state.user
+        }
+    },
     }
 

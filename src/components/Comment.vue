@@ -50,8 +50,7 @@ export default {
 },
     props:{
       id: String | Number,
-},
-}
+},}
 </script>
 
 <style

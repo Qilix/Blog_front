@@ -46,6 +46,7 @@
                 currentPage: 1,
             }
         },
+
         computed: {
             articles() {
                 return this.$store.state.article.articles;
