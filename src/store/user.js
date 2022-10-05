@@ -1,4 +1,4 @@
-import { getUser } from '../api/instance';
+import {getUser} from '../api/instance';
 
 export default {
 
@@ -17,17 +17,17 @@ export default {
             getUser().then((result) => {
                 this.user = result.data
                 context.commit('setUser', this.user)
-            }).catch((err) =>{
-                if(err.response.status == 401){
+            }).catch((err) => {
+                if (err.response.status == 401) {
                     //
                 }
             })
-            }
-        },
-    getters:{
-        checkUser(state){
+        }
+    },
+    getters: {
+        checkUser(state) {
             return state.user
         }
     },
-    }
+}
 

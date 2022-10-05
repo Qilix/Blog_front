@@ -1,4 +1,4 @@
-import { getArticles } from '../api/instance';
+import {getArticles} from '../api/instance';
 
 export default {
 

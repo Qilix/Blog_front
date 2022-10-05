@@ -50,8 +50,8 @@ export const createComment = (id, data) => {
     return ax.post('api/posts/' + id +'/comments/', data)
 };
 
-export const updateComment = (id, comment_id) => {
-    return ax.put('api/posts/' + id + '/comments/' + comment_id);
+export const updateComment = (id, comment_id, data) => {
+    return ax.put('api/posts/' + id + '/comments/' + comment_id, data);
 };
 
 export const deleteComment = (id, comment_id) => {

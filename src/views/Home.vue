@@ -15,10 +15,6 @@
                     {{article.title}}
                 </p>
                 <p class="ml-3 auth">
-                    <v-avatar class="mr-1" color="primary" size="43">
-                        <img v-if="article.avatar" alt="Avatar"
-                            src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460">
-                    </v-avatar>
                     {{article.author}}
                 </p>
                 {{article.description}}
