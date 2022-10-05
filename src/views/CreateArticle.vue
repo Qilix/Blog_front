@@ -22,7 +22,10 @@
   ></v-textarea>
       </v-card-text>
       <v-card-text>
-    <Tiptap @customChange="settext"/>
+    <Tiptap
+        @customChange="settext"
+        :content = "this.text"
+    />
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -33,12 +36,19 @@
         >
           Отмена
         </v-btn>
-        <v-btn
+        <v-btn v-if="!this.id"
             color="blue darken-1"
             text
             @click="create"
         >
           Создать статью
+        </v-btn>
+        <v-btn v-else
+               color="blue darken-1"
+               text
+               @click="update"
+        >
+          Обновить
         </v-btn>
         <div v-if="error" class="text-center ma-2">
         <v-snackbar
@@ -69,7 +79,7 @@
 import Login from '../components/Login.vue'
 import Tiptap from '../components/Tiptap.vue';
 import { eventBus } from '../main'
-import {createArticle, createComment} from '../api/instance';
+import {createArticle, getArticleById, updateArticle} from '../api/instance';
 
 export default {
   name: "CreateArticle",
@@ -78,12 +88,12 @@ export default {
     Login,
   },
   props:{
-    id: String || Number,
+    id: String | Number,
   },
   data(){
     return {
       title: '',
-      text:'',
+      text: '',
       description: '',
       sub_only: false,
 
@@ -97,10 +107,6 @@ export default {
       descriptionRules:[
         v => !!v || 'Введите описание',
       ],
-      textRules:[
-        v => !!v || 'Введите текст',
-      ],
-
     }
   },
 
@@ -130,18 +136,29 @@ export default {
           })
         }
       },
+
       update(){
-
+        if (!this.$store.getters.checkUser) {
+          eventBus.$emit('checkUser')
+        } else {
+           updateArticle(this.id,{
+            title: this.title,
+            description: this.description,
+            text: this.text,
+            sub_only: this.sub_only,
+          }).then(res => {
+            this.$router.push({
+              name: 'article',
+              params: {id: res.data.id}
+            })
+          }).catch((err) => {
+            if (err.response.status == 422) {
+              this.snackbar = true
+              this.error = err.response.data.message
+            }
+          })
+        }
       },
-
-      edit(){
-        if(this.id){
-          this.create()
-        }
-        else{
-          this.update()
-        }
-      }
   },
 
   computed: {
@@ -151,6 +168,13 @@ export default {
   },
 
   mounted() {
+    if(this.id) {
+      getArticleById(this.id).then(res => {
+        this.title = res.data.title
+        this.description = res.data.description
+        this.text = res.data.text
+      })
+    }
     this.$store.dispatch('statusUser');
     },
 }
