@@ -2,8 +2,7 @@ import axios from 'axios'
 
 const ax = axios.create({
     withCredentials: true,
-    baseURL: 'http://valllee.ru:8000/',
-
+    baseURL: process.env.VUE_APP_APIURL,
 })
 
 export const getArticleById = (id) => {
@@ -11,6 +10,7 @@ export const getArticleById = (id) => {
 };
 
 export const getArticles = (page) => {
+    console.log(process.env)
     return ax.get('api/posts/?page=' + page);
 };
 
