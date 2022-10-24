@@ -10,7 +10,6 @@ export const getArticleById = (id) => {
 };
 
 export const getArticles = (page) => {
-    console.log(process.env)
     return ax.get('api/posts/?page=' + page);
 };
 

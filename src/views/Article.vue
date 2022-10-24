@@ -28,16 +28,16 @@
         class="mx-auto mb-8 py-1 px-4 elevation-13 rounded-lg"
         max-width="800">
       <v-card-title>
-        <h1>
+        <h2>
           {{
             article.title
-          }}</h1>
+          }}</h2>
       </v-card-title>
-      <v-card-subtitle>
-        <h5>
+      <v-card-subtitle class="mt-1">
+        <h3>
           {{
             article.author
-          }}</h5>
+          }}</h3>
       </v-card-subtitle>
       <v-card-text
           v-html="article.text">
@@ -275,5 +275,6 @@ export default {
 <style>
 .v-card__subtitle, .v-card__text, .v-card__title {
   padding: 8px 5px;
+  word-break: normal;
 }
 </style>
